@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Custom Js -->
     <script defer src="./app/js/script.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./dist/all.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./dist/style.css">
     <!-- favicon -->
@@ -39,7 +41,7 @@
 
                 <div class="app__main-form-duration form-group">
                     <label for="duration">duration</label>
-                    <input type="text" name="duration" id="duration" placeholder="min"> 
+                    <input type="text" name="duration" id="duration" placeholder="min">
                 </div>
 
                 <div class="app__main-form-cadence form-group">
@@ -47,6 +49,25 @@
                     <input type="text" name="cadence" id="cadence" placeholder="step/min">
                 </div>
             </form>
+
+            <ul class="app__main-events">
+                <li class="app__main-events-event">
+                    <div class="app__main-events-event-top">
+                        <span class="app__main-events-event-top-date" id="date">Running on June 7</span>
+                        <span class="app__main-events-event-top-iconContainer">
+                            <i tabindex="0" class="far fa-edit"></i>
+                            <i tabindex="0" class="far fa-trash-alt"></i>
+                        </span>
+                    </div>
+
+                    <div class="app__main-events-event-bottom">
+                        <span class="app__main-events-event-bottom-activity">🏃‍♀️ 2 <small>KM</small></span>
+                        <span class="app__main-events-event-bottom-activity">🕰️ 2 <small>MIN</small></span>
+                        <span class="app__main-events-event-bottom-activity">✨ 2 <small>MIN/KM</small></span>
+                        <span class="app__main-events-event-bottom-activity">🦶 2 <small>SPM</small></span>
+                    </div>
+                </li>
+            </ul>
         </section>
 
         <section class="app__map"></section>

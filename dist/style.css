@@ -60,9 +60,10 @@ body {
   gap: 1.25rem;
   width: 100%;
   background-color: #858585;
-  height: 6.3125rem;
-  padding: 0.625rem;
+  height: 7.5rem;
+  padding: 1.0625rem;
   border-radius: 0.625rem;
+  margin-bottom: 1.25rem;
 }
 
 .app__main-form .form-group {
@@ -82,6 +83,8 @@ body {
 
 .app__main-form select {
   color: #858585;
+  font-size: 1rem;
+  margin-left: 2.0625rem;
 }
 
 .app__main-form input {
@@ -145,6 +148,94 @@ body {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-area: 2 / 2 / 3 / 3;
+}
+
+.app__main-events {
+  width: 100%;
+  height: auto;
+  list-style: none;
+}
+
+.app__main-events-event {
+  background-color: #858585;
+  padding: 0.625rem;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .app__main-events-event:hover {
+    -webkit-box-shadow: 0px 10px 20px -5px #495dcf33;
+            box-shadow: 0px 10px 20px -5px #495dcf33;
+  }
+  .app__main-events-event:hover .far {
+    opacity: 1;
+  }
+}
+
+.app__main-events-event:first-child {
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
+}
+
+.app__main-events-event:last-child {
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+}
+
+.app__main-events-event-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.625rem;
+}
+
+.app__main-events-event-top-date {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.app__main-events-event-top-iconContainer .far {
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+.app__main-events-event-top-iconContainer .far:focus {
+  opacity: 1;
+}
+
+.app__main-events-event-top-iconContainer .fa-edit {
+  margin-right: 0.5625rem;
+  color: #043653;
+}
+
+.app__main-events-event-top-iconContainer .fa-trash-alt {
+  color: #fb705b;
+}
+
+.app__main-events-event-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.app__main-events-event-bottom-activity {
+  display: inline-block;
+  font-size: 1.125rem;
+  color: #ffffff;
+}
+
+.app__main-events-event-bottom-activity small {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.624);
 }
 
 .app__map {
