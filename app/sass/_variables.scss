@@ -23,11 +23,12 @@ $breakPoints : (
 // colors
 $lightOrange: hsla(12, 69, 79, 1);
 $darkOrange: hsla(8, 95, 67, 1);
-$lightGray: hsla(330, 1, 74, 1);
+$lightGray: rgb(133, 133, 133);
 $darkGray: hsla(230, 3, 34, 1);
 $indigo: hsla(202, 91, 17, 1);
 
 // fonts
 $manRope : 'Manrope', sans-serif;  // 400 600
+$fontSize : rem(16);
 
 

@@ -1,1 +1,158 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+html {
+  font-size: 100%;
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1rem;
+  font-family: "Manrope", sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 65%;
+      grid-template-columns: 35% 65%;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.app__main {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+  background-color: #545559;
+  padding: 2.5rem;
+}
+
+.app__main-logoContainer {
+  display: inline-block;
+  width: 11.875rem;
+  margin-bottom: 2.5rem;
+}
+
+.app__main-logoContainer img {
+  min-width: 11.875rem;
+  width: 100%;
+}
+
+.app__main-form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  background-color: #858585;
+  height: 6.3125rem;
+  padding: 0.625rem;
+  border-radius: 0.625rem;
+}
+
+.app__main-form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.app__main-form select, .app__main-form input {
+  width: 5.625rem;
+  padding: 0.25rem;
+}
+
+.app__main-form select {
+  color: #858585;
+}
+
+.app__main-form input {
+  font-size: 0.875rem;
+}
+
+.app__main-form input::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: #858585;
+}
+
+.app__main-form input:-ms-input-placeholder {
+  font-size: 1rem;
+  color: #858585;
+}
+
+.app__main-form input::-ms-input-placeholder {
+  font-size: 1rem;
+  color: #858585;
+}
+
+.app__main-form input::placeholder {
+  font-size: 1rem;
+  color: #858585;
+}
+
+.app__main-form label {
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: capitalize;
+  font-size: 1.125rem;
+}
+
+.app__main-form-type {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.app__main-form-distance {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.app__main-form-duration {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.app__main-form-cadence {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.app__map {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: #eeb3a5;
+}
+/*# sourceMappingURL=style.css.map */

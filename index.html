@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
     <title>Aspirer | Log Workout</title>
 </head>
+
 <body>
-    
+    <main class="app">
+        <section class="app__main">
+            <div class="app__main-logoContainer">
+                <img src="./images/aspirer-logo-light1.png" alt="main-logo">
+            </div>
+
+            <form class="app__main-form">
+                <div class="app__main-form-typeOfWorkout form-group">
+                    <label for="typeOfWorkout">Type</label>
+                    <select name="typeOfWorkout" id="typeOfWorkout">
+                        <option value="running">running</option>
+                        <option value="cycling">cycling</option>
+                    </select>
+                </div>
+
+                <div class="app__main-form-distance form-group">
+                    <label for="distance">distance</label>
+                    <input type="text" name="distance" id="distance" placeholder="km">
+                </div>
+
+                <div class="app__main-form-duration form-group">
+                    <label for="duration">duration</label>
+                    <input type="text" name="duration" id="duration" placeholder="min"> 
+                </div>
+
+                <div class="app__main-form-cadence form-group">
+                    <label for="cadence">cadence</label>
+                    <input type="text" name="cadence" id="cadence" placeholder="step/min">
+                </div>
+            </form>
+        </section>
+
+        <section class="app__map"></section>
+    </main>
 </body>
+
 </html>
