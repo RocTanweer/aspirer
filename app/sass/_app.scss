@@ -98,7 +98,7 @@
                     &:hover{
                         box-shadow: 0px 10px 20px -5px #495dcf33;
 
-                        .far{
+                        .icon{
                             opacity: 1;
                         }
                     }
@@ -126,23 +126,39 @@
                     }
 
                     &-iconContainer {
-                        .far {
+                        .icon {
+                            background-color: transparent;
+                            border: none;
+                            outline: none;
                             cursor: pointer;
                             opacity: 0;
                             transition: opacity 200ms ease-in-out;
+                            font-size: rem(16);
+
+                            &:first-child{
+                                margin-right: rem(9);
+                            }
 
                             &:focus {
                                 opacity: 1;
                             }
-                        }
-                        
-                        .fa-edit {
-                            margin-right: rem(9);
-                            color: $indigo;
-                        }
+                            
+                            .fa-edit {
+                                color: $indigo;
+                            }
 
-                        .fa-trash-alt {
-                            color: $darkOrange;
+                            .fa-trash-alt {
+                                color: $darkOrange;
+                            }
+
+                            .sr-only {
+                                position:absolute;
+                                left:-10000px;
+                                top:auto;
+                                width:1px;
+                                height:1px;
+                                overflow:hidden;
+                            }
                         }
                     }
                 }

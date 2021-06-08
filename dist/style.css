@@ -167,7 +167,7 @@ body {
     -webkit-box-shadow: 0px 10px 20px -5px #495dcf33;
             box-shadow: 0px 10px 20px -5px #495dcf33;
   }
-  .app__main-events-event:hover .far {
+  .app__main-events-event:hover .icon {
     opacity: 1;
   }
 }
@@ -198,24 +198,40 @@ body {
   color: #ffffff;
 }
 
-.app__main-events-event-top-iconContainer .far {
+.app__main-events-event-top-iconContainer .icon {
+  background-color: transparent;
+  border: none;
+  outline: none;
   cursor: pointer;
   opacity: 0;
   -webkit-transition: opacity 200ms ease-in-out;
   transition: opacity 200ms ease-in-out;
+  font-size: 1rem;
 }
 
-.app__main-events-event-top-iconContainer .far:focus {
+.app__main-events-event-top-iconContainer .icon:first-child {
+  margin-right: 0.5625rem;
+}
+
+.app__main-events-event-top-iconContainer .icon:focus {
   opacity: 1;
 }
 
-.app__main-events-event-top-iconContainer .fa-edit {
-  margin-right: 0.5625rem;
+.app__main-events-event-top-iconContainer .icon .fa-edit {
   color: #043653;
 }
 
-.app__main-events-event-top-iconContainer .fa-trash-alt {
+.app__main-events-event-top-iconContainer .icon .fa-trash-alt {
   color: #fb705b;
+}
+
+.app__main-events-event-top-iconContainer .icon .sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .app__main-events-event-bottom {
