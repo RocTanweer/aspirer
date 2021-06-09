@@ -15,3 +15,30 @@ body {
     font-family: $manRope;
     line-height: 1.5;
 }
+
+.leaflet-popup {
+    &-content-wrapper, &-tip {
+        background-color: $darkGray;
+        color: #ffffff;
+    }
+}
+
+.workout-cyling {
+    border-left: 5px solid $indigo;
+}
+
+.workout-running {
+    border-left: 5px solid $darkOrange;
+}
+
+.popup-cycling {
+    .leaflet-popup-content-wrapper {
+        border-left: 5px solid $darkOrange;
+    }
+}
+
+.popup-running {
+    .leaflet-popup-content-wrapper {
+        border-left: 5px solid $indigo;
+    }
+}

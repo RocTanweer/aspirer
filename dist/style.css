@@ -17,6 +17,27 @@ body {
   line-height: 1.5;
 }
 
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: #545559;
+  color: #ffffff;
+}
+
+.workout-cyling {
+  border-left: 5px solid #043653;
+}
+
+.workout-running {
+  border-left: 5px solid #fb705b;
+}
+
+.popup-cycling .leaflet-popup-content-wrapper {
+  border-left: 5px solid #fb705b;
+}
+
+.popup-running .leaflet-popup-content-wrapper {
+  border-left: 5px solid #043653;
+}
+
 .app {
   display: -ms-grid;
   display: grid;
@@ -108,6 +129,10 @@ body {
   padding: 1.0625rem;
   border-radius: 0.625rem;
   margin-bottom: 1.25rem;
+}
+
+.app__main-form.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 23.4375rem) {
@@ -300,6 +325,7 @@ body {
   background-color: #858585;
   padding: 0.625rem;
   cursor: pointer;
+  position: relative;
 }
 
 @media (hover: hover) {
@@ -430,7 +456,6 @@ body {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-area: 1 / 2 / 2 / 3;
-  background-color: #eeb3a5;
 }
 
 @media screen and (max-width: 50.4375rem) {

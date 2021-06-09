@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Custom Js -->
-    <script defer src="./app/js/script.js"></script>
+    <!-- Leaflet CSS  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="./dist/all.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./dist/style.css">
+    <!-- Leaflet js -->
+    <script defer src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <!-- Custom Js -->
+    <script defer src="./app/js/script.js"></script>
     <!-- favicon -->
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <!-- Google fonts -->
@@ -25,7 +33,7 @@
                 <img src="./images/aspirer-logo-light1.png" alt="main-logo">
             </div>
 
-            <form class="app__main-form">
+            <form class="app__main-form hidden">
                 <div class="app__main-form-typeOfWorkout form-group">
                     <label for="typeOfWorkout">Type</label>
                     <select name="typeOfWorkout" id="typeOfWorkout">
@@ -53,10 +61,11 @@
                     <label for="elevation">elevation</label>
                     <input type="text" name="elevation" id="elevation" placeholder="meters">
                 </div>
+                <button  class="sr-only" name="submit" id="submit" type="submit">submit</button>
             </form>
 
-            <ul class="app__main-events">
-                <li class="app__main-events-event">
+            <ul class="app__main-events ">
+                <li class="app__main-events-event workout-running">
                     <div class="app__main-events-event-top">
                         <span class="app__main-events-event-top-date" id="date">Running on June 7</span>
                         <span class="app__main-events-event-top-iconContainer">
@@ -84,7 +93,7 @@
             </ul>
         </section>
 
-        <section class="app__map"></section>
+        <section id="mapContainer" class="app__map"></section>
     </main>
 </body>
 
