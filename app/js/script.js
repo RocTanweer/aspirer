@@ -3,6 +3,45 @@ const typeOfWorkouts = document.getElementById('typeOfWorkouts');
 const formElevation = document.querySelector('.app__main-form-elevation');
 const formCadence = document.querySelector('.app__main-form-cadence');
 
+
+
+class Workout {
+    constructor(distance, duration, coords) {
+        this.distance = distance;  //KM
+        this.duration = duration;  //MIN
+        this.coords = coords;  // []
+        this.date = new Date(); 
+        this.id = Date.now();
+    }
+}
+
+class Running extends Workout{
+    constructor(distance, duration, coords, cadence) {
+        super(distance, duration, coords);
+        this.cadence = cadence;
+        this.type = 'running';
+        this._calcPace();
+    }
+
+    _calcPace() {
+        this.pace = this.duration / this.distance;
+    }
+}
+
+class Cycling extends Workout {
+    constructor(distance, duration, coords, elevationGain) {
+        super(distance, duration, coords);
+        this.elevationGain = elevationGain;
+        this.type = 'cycling';
+        this._calcSpeed();
+    }
+
+    _calcSpeed() {
+        this.speed = this.distance / (this.duration / 60);
+    }
+}
+
+
 class App {
     #coords;
     #mymap;
