@@ -1,3 +1,4 @@
+const eventsContainer = document.querySelector('.app__main-events');
 const form = document.querySelector('.app__main-form');
 const formElevation = document.querySelector('.app__main-form-elevation');
 const formCadence = document.querySelector('.app__main-form-cadence');
@@ -14,12 +15,13 @@ class Workout {
         this.distance = distance;  //KM
         this.duration = duration;  //MIN
         this.coords = coords;  // []
-        this.date = new Date();
         this.id = Date.now();
+        this._getDate();
     }
 
-    getDate() {
-        return `${months[this.date.getMonth()]} ${this.date.getDay()}`
+    _getDate() {
+        const date = new Date();
+        this.date = `${months[date.getMonth()]} ${date.getDay()}`;
     }
 }
 
@@ -33,6 +35,7 @@ class Running extends Workout{
 
     calcPace() {
         this.pace = this.duration / this.distance;
+        return this.pace
     }
 }
 
@@ -101,13 +104,57 @@ class App {
     _renderMarker(workout) {
         L.marker(this.#coords)
             .addTo(this.#mymap)
-            .bindPopup(`<p style="font-size : 16px;">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type} on ${workout.getDate()}</p>`,
+            .bindPopup(`<p style="font-size : 16px;">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
                 {
                     autoClose: false,
                     closeOnClick: false,
                     className: `popup-${workout.type}`,
                 })
             .openPopup();
+    }
+
+    _renderWorkout(workout) {
+        let htmlContent = `
+            <li class="app__main-events-event workout-${workout.type}">
+                <div class="app__main-events-event-top">
+                    <span class="app__main-events-event-top-date" id="date">${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</span>
+                    <span class="app__main-events-event-top-iconContainer">
+                        <button aria-label="edit-button" class="icon">
+                            <span class="sr-only">edit icon</span>
+                            <i class="far fa-edit"></i>
+                        </button>
+                        <button aria-label="delete-button" class="icon">
+                            <span class="sr-only">delete icon</span>
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </span>
+                </div>
+
+                <div class="app__main-events-event-bottom">
+                    <span class="app__main-events-event-bottom-activity">🛣️ 2 <small>KM</small></span>
+                    <span class="app__main-events-event-bottom-activity">🕰️ 2 <small>MIN</small></span>
+        `;
+
+        if(workout.type === 'running') {
+            htmlContent += `
+                        <span class="app__main-events-event-bottom-activity">🏃‍♀️ ${workout.pace} <small>MIN/KM</small></span>
+                        <span class="app__main-events-event-bottom-activity">🦶 ${workout.cadence} <small>SPM</small></span>
+                    </div>
+                </li>
+
+            `;
+        };
+
+        if(workout.type === 'cycling') {
+            htmlContent += `
+                        <span class="app__main-events-event-bottom-activity">🚴 ${workout.speed} <small>KM/H</small></span>
+                        <span class="app__main-events-event-bottom-activity">🗻 ${workout.elevationGain} <small>M</small></span>
+                    </div>
+                </li>
+            `;
+        };
+
+        eventsContainer.insertAdjacentHTML('afterbegin', htmlContent);        
     }
 
     _newWorkout(e) {
@@ -132,10 +179,16 @@ class App {
             if (!this._validNum(distance, duration, elevation) && !this._arePositive(distance, duration)) return
 
             workout = new Cycling(distance, duration, this.#coords, elevation);
-            console.log(workout)
+            console.log(workout.type)
         }
 
-        this._renderMarker(workout)
+        inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
+
+        form.classList.add('hidden');
+
+        this._renderMarker(workout);
+
+        this._renderWorkout(workout);
     }
 
 

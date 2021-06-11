@@ -175,6 +175,8 @@
                 padding: rem(10);
                 cursor: pointer;
                 position: relative;
+                border-radius: rem(10);
+                margin-bottom: rem(10);
 
                 @media (hover : hover) {
                     &:hover{
@@ -184,16 +186,6 @@
                             opacity: 1;
                         }
                     }
-                }
-
-                &:first-child {
-                    border-top-left-radius: rem(10);
-                    border-top-right-radius: rem(10);
-                }
-
-                &:last-child {
-                    border-bottom-left-radius: rem(10);
-                    border-bottom-right-radius: rem(10);
                 }
 
                 &-top {

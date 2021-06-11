@@ -22,12 +22,12 @@ body {
   color: #ffffff;
 }
 
-.workout-cyling {
-  border-left: 5px solid #043653;
+.workout-cycling {
+  border-left: 5px solid #fb705b;
 }
 
 .workout-running {
-  border-left: 5px solid #fb705b;
+  border-left: 5px solid #043653;
 }
 
 .popup-cycling .leaflet-popup-content-wrapper {
@@ -326,6 +326,8 @@ body {
   padding: 0.625rem;
   cursor: pointer;
   position: relative;
+  border-radius: 0.625rem;
+  margin-bottom: 0.625rem;
 }
 
 @media (hover: hover) {
@@ -336,16 +338,6 @@ body {
   .app__main-events-event:hover .icon {
     opacity: 1;
   }
-}
-
-.app__main-events-event:first-child {
-  border-top-left-radius: 0.625rem;
-  border-top-right-radius: 0.625rem;
-}
-
-.app__main-events-event:last-child {
-  border-bottom-left-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
 }
 
 .app__main-events-event-top {
