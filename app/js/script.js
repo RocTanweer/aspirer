@@ -67,6 +67,7 @@ class App {
         // }, 500);
 
         this._renderFromLS();
+        eventsContainer.addEventListener('click', this._moveToMarker.bind(this));
     }
 
     _getCurrentLocation() {
@@ -113,9 +114,7 @@ class App {
     }
 
     _renderMarker(workout) {
-        const locData = this.#coords || workout.coords;
-        console.log(this.#mymap)
-        L.marker(locData)
+        L.marker(workout.coords)
             .addTo(this.#mymap)
             .bindPopup(`<p style="font-size : 16px;">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
                 {
@@ -128,7 +127,7 @@ class App {
 
     _renderWorkout(workout) {
         let htmlContent = `
-            <li class="app__main-events-event workout-${workout.type}">
+            <li class="app__main-events-event workout-${workout.type}" id=${workout.id}>
                 <div class="app__main-events-event-top">
                     <span class="app__main-events-event-top-date" id="date">${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</span>
                     <span class="app__main-events-event-top-iconContainer">
@@ -173,8 +172,6 @@ class App {
     _renderFromLS() {
         const datas = JSON.parse(localStorage.getItem('workouts')) || [];
         this.#workouts = datas;
-        console.log(this.#workouts)
-
 
         datas.forEach((data) => {
             this._renderWorkout(data);
@@ -209,7 +206,7 @@ class App {
         // console.log(workout)
 
         form.classList.add('hidden');
-        console.log(this.#workouts)
+
 
         this.#workouts.push(workout);
         localStorage.setItem('workouts', JSON.stringify(this.#workouts));
@@ -219,7 +216,16 @@ class App {
         this._renderWorkout(workout);
     }
 
+    _moveToMarker(e) {
+        const workoutFromUI = e.target.closest('.app__main-events-event');
+        
+        const clickedWorkout = this.#workouts.find(workout => workout.id === +workoutFromUI.id);
+        console.log(clickedWorkout)
 
+        this.#mymap.setView(clickedWorkout.coords, 15, {
+            animate: true,
+        })
+    }
 }
 
 const app = new App();
