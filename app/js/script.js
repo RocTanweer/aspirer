@@ -21,7 +21,7 @@ class Workout {
 
     _getDate() {
         const date = new Date();
-        this.date = `${months[date.getMonth()]} ${date.getDay()}`;
+        this.date = `${months[date.getMonth()]} ${date.getDate()}`;
     }
 }
 
@@ -34,8 +34,8 @@ class Running extends Workout{
     }
 
     calcPace() {
-        this.pace = this.duration / this.distance;
-        return this.pace
+        const calc = this.duration / this.distance;
+        this.pace = +calc.toFixed(1);
     }
 }
 
@@ -48,18 +48,25 @@ class Cycling extends Workout {
     }
 
     calcSpeed() {
-        this.speed = this.distance / (this.duration / 60);
+        const calc = this.distance / (this.duration / 60);
+        this.speed = +calc.toFixed(1);
     }
 }
 
 class App {
     #coords;
     #mymap;
+    #workouts;
     
     constructor() {
         this._getCurrentLocation();
         form.addEventListener('submit', this._newWorkout.bind(this));
         typeOfWorkouts.addEventListener('change', this._toggleElevationField.bind(this));
+        // setTimeout(() => {
+        //     this._renderFromLS();
+        // }, 500);
+
+        this._renderFromLS();
     }
 
     _getCurrentLocation() {
@@ -79,7 +86,11 @@ class App {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(this.#mymap);
 
-            this.#mymap.on('click', this._showForm.bind(this))
+            this.#mymap.on('click', this._showForm.bind(this));
+
+            this.#workouts.forEach(workout => {
+                this._renderMarker(workout);
+            })
     }
 
     _showForm(mapEvent) {
@@ -102,7 +113,9 @@ class App {
     }
 
     _renderMarker(workout) {
-        L.marker(this.#coords)
+        const locData = this.#coords || workout.coords;
+        console.log(this.#mymap)
+        L.marker(locData)
             .addTo(this.#mymap)
             .bindPopup(`<p style="font-size : 16px;">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
                 {
@@ -157,6 +170,17 @@ class App {
         eventsContainer.insertAdjacentHTML('afterbegin', htmlContent);        
     }
 
+    _renderFromLS() {
+        const datas = JSON.parse(localStorage.getItem('workouts')) || [];
+        this.#workouts = datas;
+        console.log(this.#workouts)
+
+
+        datas.forEach((data) => {
+            this._renderWorkout(data);
+        })
+    }
+
     _newWorkout(e) {
         e.preventDefault();
 
@@ -179,12 +203,16 @@ class App {
             if (!this._validNum(distance, duration, elevation) && !this._arePositive(distance, duration)) return
 
             workout = new Cycling(distance, duration, this.#coords, elevation);
-            console.log(workout.type)
         }
-
+        
         inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
+        // console.log(workout)
 
         form.classList.add('hidden');
+        console.log(this.#workouts)
+
+        this.#workouts.push(workout);
+        localStorage.setItem('workouts', JSON.stringify(this.#workouts));
 
         this._renderMarker(workout);
 

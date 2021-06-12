@@ -319,6 +319,8 @@ body {
   width: 100%;
   height: auto;
   list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .app__main-events-event {
