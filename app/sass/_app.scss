@@ -11,7 +11,7 @@
 
     @include responsive(large) {
         grid-template-columns: 1fr;
-        grid-template-rows: rem(504) 1fr;
+        grid-template-rows: calc(400px + (504 - 400) * ((100vw - 375px) / (807 - 375))) 1fr;
     }
 
     &__main {
@@ -167,10 +167,16 @@
 
         &-events {
             width: 100%;
-            height: auto;
+            height: rem(580);
             list-style: none;
             overflow-y: scroll;
-            overflow-x: hidden;
+            padding-right: 57px;
+            box-sizing: content-box;
+
+            @include responsive(large) {
+                padding-right: 0;
+                height: calc(269px + (360 - 269) * ((100vw - 375px) / (807 - 375)));
+            }
 
             &-event {
                 background-color: $lightGray;

@@ -14,6 +14,7 @@ body {
     font-size: $fontSize;
     font-family: $manRope;
     line-height: 1.5;
+    scroll-behavior: none;
 }
 
 .leaflet-popup {
@@ -40,5 +41,18 @@ body {
 .popup-running {
     .leaflet-popup-content-wrapper {
         border-left: 5px solid $indigo;
+    }
+}
+
+.popup {
+    // font-size: calc(12px + 4 * ((100vw - 375px) / (807 - 375)));
+    font-size: rem(16);
+
+    @include responsive(large) {
+        font-size: rem(14);
+    }
+
+    @include responsive(small) {
+        font-size: rem(12);
     }
 }

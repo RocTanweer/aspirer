@@ -15,6 +15,7 @@ body {
   font-size: 1rem;
   font-family: "Manrope", sans-serif;
   line-height: 1.5;
+  scroll-behavior: none;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -36,6 +37,22 @@ body {
 
 .popup-running .leaflet-popup-content-wrapper {
   border-left: 5px solid #043653;
+}
+
+.popup {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 50.4375rem) {
+  .popup {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 23.4375rem) {
+  .popup {
+    font-size: 0.75rem;
+  }
 }
 
 .app {
@@ -60,8 +77,8 @@ body {
   .app {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: 31.5rem 1fr;
-        grid-template-rows: 31.5rem 1fr;
+    -ms-grid-rows: calc(400px + (504 - 400) * ((100vw - 375px) / (807 - 375))) 1fr;
+        grid-template-rows: calc(400px + (504 - 400) * ((100vw - 375px) / (807 - 375))) 1fr;
   }
 }
 
@@ -317,10 +334,19 @@ body {
 
 .app__main-events {
   width: 100%;
-  height: auto;
+  height: 36.25rem;
   list-style: none;
   overflow-y: scroll;
-  overflow-x: hidden;
+  padding-right: 57px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+@media screen and (max-width: 50.4375rem) {
+  .app__main-events {
+    padding-right: 0;
+    height: calc(269px + (360 - 269) * ((100vw - 375px) / (807 - 375)));
+  }
 }
 
 .app__main-events-event {

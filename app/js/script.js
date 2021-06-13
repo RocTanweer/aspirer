@@ -116,7 +116,7 @@ class App {
     _renderMarker(workout) {
         L.marker(workout.coords)
             .addTo(this.#mymap)
-            .bindPopup(`<p style="font-size : 16px;">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
+            .bindPopup(`<p class="popup">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
                 {
                     autoClose: false,
                     closeOnClick: false,
