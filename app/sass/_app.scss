@@ -30,20 +30,45 @@
         }
 
         &-logoContainer {
-            display: inline-block;
-            width: rem(190);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
             margin-bottom: rem(40);
 
-            @include responsive(tab) {
-                width: rem(150);
-            }
-
-            @include responsive(xsmall) {
-                width: rem(120);
-            }
-
             img {
-                width: 100%;
+                width: rem(196);
+
+                @include responsive(tab) {
+                    width: rem(150);
+                }
+
+                @include responsive(xsmall) {
+                    width: rem(120);
+                }
+            }
+
+            .deleteAll {
+                border: none;
+                cursor: pointer;
+                font-size: rem(16);
+                color: #ffffff;
+                background-color: $darkOrange;
+                padding: rem(8) rem(16);
+                transition: background-color 300ms ease-in-out;
+
+                @include responsive(small) {
+                    padding: rem(5) rem(10);
+                    font-size: rem(12);
+                }
+
+                &:hover {
+                    background-color: lighten($darkOrange, 7%);
+                }
+
+                &:active{
+                    background-color:  lighten($darkOrange, 7%);
+                }
             }
         }
 

@@ -7,6 +7,7 @@ const inputDistance = document.getElementById('distance');
 const inputDuration = document.getElementById('duration');
 const inputCadence = document.getElementById('cadence');
 const inputElevation = document.getElementById('elevation');
+const deleteAllBtn = document.querySelector('.deleteAll');
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -69,6 +70,7 @@ class App {
 
         this._renderFromLS();
         eventsContainer.addEventListener('click', this._moveToMarker.bind(this));
+        deleteAllBtn.addEventListener('click', this._deleteAllWorkouts.bind(this));
     }
 
     _getCurrentLocation() {
@@ -242,6 +244,13 @@ class App {
             currentMarker.remove();
         }
 
+    }
+
+    _deleteAllWorkouts(e) {
+        eventsContainer.textContent = '';
+        this.#workouts = [];
+        localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+        this.#markers.forEach(marker => marker.remove());
     }
 }
 
