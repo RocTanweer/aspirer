@@ -15,7 +15,8 @@ body {
   font-size: 1rem;
   font-family: "Manrope", sans-serif;
   line-height: 1.5;
-  scroll-behavior: none;
+  overscroll-behavior-y: none;
+  overflow: hidden;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -419,6 +420,10 @@ body {
 
 .app__main-events-event-top-iconContainer .icon:focus {
   opacity: 1;
+}
+
+.app__main-events-event-top-iconContainer .icon .far {
+  pointer-events: none;
 }
 
 .app__main-events-event-top-iconContainer .icon .fa-edit {

@@ -57,6 +57,7 @@ class App {
     #coords;
     #mymap;
     #workouts;
+    #markers = [];
     
     constructor() {
         this._getCurrentLocation();
@@ -98,6 +99,7 @@ class App {
         const { lat, lng } = mapEvent.latlng;
         this.#coords = [lat, lng];
         form.classList.remove('hidden');
+        inputDistance.focus();
     }
 
     _toggleElevationField(e) {
@@ -114,8 +116,9 @@ class App {
     }
 
     _renderMarker(workout) {
-        L.marker(workout.coords)
-            .addTo(this.#mymap)
+        const marker = L.marker(workout.coords);
+        
+        marker.addTo(this.#mymap)
             .bindPopup(`<p class="popup">${workout.type === 'running' ? '🏃‍♀️' : '🚴'} ${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</p>`,
                 {
                     autoClose: false,
@@ -123,6 +126,8 @@ class App {
                     className: `popup-${workout.type}`,
                 })
             .openPopup();
+
+        this.#markers.push(marker)
     }
 
     _renderWorkout(workout) {
@@ -131,11 +136,11 @@ class App {
                 <div class="app__main-events-event-top">
                     <span class="app__main-events-event-top-date" id="date">${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</span>
                     <span class="app__main-events-event-top-iconContainer">
-                        <button aria-label="edit-button" class="icon">
+                        <button aria-label="edit-button" class="icon edit">
                             <span class="sr-only">edit icon</span>
                             <i class="far fa-edit"></i>
                         </button>
-                        <button aria-label="delete-button" class="icon">
+                        <button aria-label="delete-button" class="icon delete">
                             <span class="sr-only">delete icon</span>
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -143,8 +148,8 @@ class App {
                 </div>
 
                 <div class="app__main-events-event-bottom">
-                    <span class="app__main-events-event-bottom-activity">🛣️ 2 <small>KM</small></span>
-                    <span class="app__main-events-event-bottom-activity">🕰️ 2 <small>MIN</small></span>
+                    <span class="app__main-events-event-bottom-activity">🛣️ ${workout.distance} <small>KM</small></span>
+                    <span class="app__main-events-event-bottom-activity">🕰️ ${workout.duration} <small>MIN</small></span>
         `;
 
         if(workout.type === 'running') {
@@ -218,13 +223,25 @@ class App {
 
     _moveToMarker(e) {
         const workoutFromUI = e.target.closest('.app__main-events-event');
+
+        if(!workoutFromUI) return
         
         const clickedWorkout = this.#workouts.find(workout => workout.id === +workoutFromUI.id);
-        console.log(clickedWorkout)
+        const index = this.#workouts.findIndex(workout => workout.id === +workoutFromUI.id);
 
         this.#mymap.setView(clickedWorkout.coords, 15, {
             animate: true,
         })
+
+        const currentMarker = this.#markers[index];
+
+        if(e.target.classList.contains('delete')) {
+            eventsContainer.removeChild(workoutFromUI);
+            this.#workouts.splice(index, 1);
+            localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+            currentMarker.remove();
+        }
+
     }
 }
 

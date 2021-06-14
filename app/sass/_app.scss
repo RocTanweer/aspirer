@@ -225,6 +225,7 @@
                             transition: opacity 200ms ease-in-out;
                             font-size: rem(16);
 
+
                             @include responsive(large) {
                                 opacity: 1;
                             }
@@ -237,6 +238,10 @@
                                 opacity: 1;
                             }
                             
+                            .far {
+                                pointer-events: none;
+                            }
+
                             .fa-edit {
                                 color: $indigo;
                             }

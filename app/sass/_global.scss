@@ -14,7 +14,8 @@ body {
     font-size: $fontSize;
     font-family: $manRope;
     line-height: 1.5;
-    scroll-behavior: none;
+    overscroll-behavior-y: none;
+    overflow: hidden;
 }
 
 .leaflet-popup {
