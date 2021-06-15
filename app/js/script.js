@@ -1,3 +1,4 @@
+const notification = document.querySelector('.app__map-info');  // to notify user that location not accessed
 const eventsContainer = document.querySelector('.app__main-events');  // ul that contains all the workout events
 const form = document.querySelector('.app__main-form');  // form to create the workout events
 const formElevation = document.querySelector('.app__main-form-elevation');  // form section for elevation
@@ -108,7 +109,7 @@ class App {
     _getCurrentLocation() {
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), (error) => {  // common concept at the top
-                alert(`This is ${error}`)
+                notification.classList.remove('hidden');
             })
         }
     }
@@ -182,10 +183,6 @@ class App {
                 <div class="app__main-events-event-top">
                     <span class="app__main-events-event-top-date" id="date">${workout.type[0].toUpperCase()}${workout.type.slice(1)} on ${workout.date}</span>
                     <span class="app__main-events-event-top-iconContainer">
-                        <button aria-label="edit-button" class="icon edit">
-                            <span class="sr-only">edit icon</span>
-                            <i class="far fa-edit"></i>
-                        </button>
                         <button aria-label="delete-button" class="icon delete">
                             <span class="sr-only">delete icon</span>
                             <i class="far fa-trash-alt"></i>

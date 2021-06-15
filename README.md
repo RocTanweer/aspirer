@@ -1,6 +1,6 @@
 # Aspirer
 A small Web Application which is made to help you manage your *running* and *cycling* activities. This is just another version of [mapty](https://mapty.netlify.app/), 
-a project made originally by [jonas](https://twitter.com/jonasschmedtman). I though why not making this all by myself from scratch and not just the JavaScript part that
+a project made originally by [jonas](https://twitter.com/jonasschmedtman). I thought why not making this all by myself from scratch and not just the JavaScript part that
 Jonas showed in his [udemyCoarse](https://www.udemy.com/course/the-complete-javascript-course/). So here is my version with some extra features.
 
 ## Fully Responsive
@@ -26,7 +26,7 @@ You may visit the site [here](https://roctanweer.github.io/aspirer/)
 - Put a *detailed* marker on the map by clicking on the map where the activity happened 
 - Move the map to corresponding marker when clicked on the logged activity
 - Delete a logged activity by clicking on the trash can icon along with the corresponding marker on the map
-- Delete all the logged activities along with all the markers on the map by clicking on the *Delete ALl* button
+- Delete all the logged activities along with all the markers on the map by clicking on the *Delete ALL* button
 - Revisit the application without loosing any of their data
 
 ![site preview](./images/desktop-preview.jpg)
